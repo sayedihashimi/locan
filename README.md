@@ -1,0 +1,1 @@
+This is a Visual Studio add-in which helps with translations. More to come later.
