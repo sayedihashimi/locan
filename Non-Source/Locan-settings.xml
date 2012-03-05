@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Locan xmlns="http://schemas.microsoft.com/2011/04/Locan">
+  <Settings DefaultApiKey="bing api key here" 
+            PreserveUpdates="true" />
+  <Languages>
+    <Language Name="en"/>
+    <Language Name="pt"/>
+    <Language Name="pr"/>
+    <Language Name="vi"/>
+  </Languages>
+</Locan>

@@ -1,0 +1,28 @@
+﻿@using Locan.Website.Models;	
+@model IEnumerable<TranslationItem>	 
+
+@{
+    ViewBag.Title = "Index";
+		object data = new {
+					isoCode = ViewContext.RouteData.Values["isoCode"],
+					fileId = ViewContext.RouteData.Values["fileid"]										
+		};	
+}
+
+<h2>Translate</h2>
+@{
+	
+}
+<form action="/translate/save/@ViewContext.RouteData.Values["isocode"]/@ViewContext.RouteData.Values["fileid"]" method="post">
+	<ul id="translate">
+	@foreach (TranslationItem item in Model)
+ {
+		<li title="@item.Comment">
+			<label for="@item.ID">@item.ID</label>
+			<span>@item.ValueFrom</span>
+			<textarea lang="@ViewContext.RouteData.Values["isoCode"]" id="@item.ID" name="@item.ID" rows="1">@item.ValueTo</textarea>		
+		</li> 
+ }
+	</ul>
+	<button type="submit">Save translations</button>
+</form>

@@ -1,0 +1,52 @@
+﻿body, textarea, table {
+    font: 12pt arial;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 3px;
+}
+
+button {
+    margin-top: 2em;
+}
+
+#translate label {
+    width: 250px;
+    display: inline-table;
+    text-align: right;
+    padding-right: 1em;
+    font-weight: bold;
+}
+
+#translate span {
+    width: 120px;
+    display: inline-block;
+    margin-right: 70px;
+}
+
+#translate textarea {
+    width: 700px;
+    border: 1px solid gray;
+    padding: 2px;
+    height: 20px;
+}
+
+#crowdsource label {
+    width: 120px;
+    display: inline-table;
+    text-align: right;
+    padding-right: 1em;
+}
+
+#crowdsource textarea {
+    width: 400px;
+    border: 1px solid gray;
+    padding: 2px;
+    height: 40px;
+}

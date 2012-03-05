@@ -1,0 +1,23 @@
+﻿@using Locan.Website.Models;
+@model IEnumerable<Language>	 
+
+@{
+    ViewBag.Title = "Index";	
+}
+
+<h2>Ask for translation</h2>
+<p>Enter the email addresses of people you want to help you with the translation. Put each email on a separate line</p>
+
+<form action="/crowdsource/save/@ViewContext.RouteData.Values["fileid"]" method="post">
+	<ul id="crowdsource">
+	 @foreach (Language language in Model)
+	 {
+			<li>
+				<label for="@language.IsoCode">@language.Culture.EnglishName</label>
+				<textarea id="@language.IsoCode" name="@language.IsoCode" placeholder="Enter e-mail addresses">@string.Join(Environment.NewLine, language.Emails)</textarea>
+			</li>
+	 }
+ </ul>
+ 
+	<button type="submit">Send to friends</button>
+</form>
