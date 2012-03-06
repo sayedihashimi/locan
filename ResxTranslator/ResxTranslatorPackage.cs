@@ -87,10 +87,11 @@ namespace Microsoft.ResxTranslator
                 mcs.AddCommand(menuItem);
                 menuItem.BeforeQueryStatus += new EventHandler(menuItem_BeforeQueryStatus);
 
-                CommandID crowdSourceCommandID = new CommandID(GuidList.guidResxTranslatorCrowdSource, (int)PkgCmdIDList.cmdidOneClickLocalization);
-                OleMenuCommand crowdSourceItem = new OleMenuCommand(CrowdSourceCallback, crowdSourceCommandID);
-                mcs.AddCommand(crowdSourceItem);
-                crowdSourceItem.BeforeQueryStatus += new EventHandler(menuItem_BeforeQueryStatus);
+                // Don't wire up the crowdSource command since it is not functional now
+                //CommandID crowdSourceCommandID = new CommandID(GuidList.guidResxTranslatorCrowdSource, (int)PkgCmdIDList.cmdidOneClickLocalization);
+                //OleMenuCommand crowdSourceItem = new OleMenuCommand(CrowdSourceCallback, crowdSourceCommandID);
+                //mcs.AddCommand(crowdSourceItem);
+                //crowdSourceItem.BeforeQueryStatus += new EventHandler(menuItem_BeforeQueryStatus);
             }
         }
 

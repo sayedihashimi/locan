@@ -115,7 +115,8 @@
                                 ILocanRow translatedRow = new LocanRow(id: sourceRow.Id, translatedString: translation.TrnaslatedString);
                                 writer.WriteRow(translatedRow);
 
-                                addedResxProjectItem = this.AddFileToProject(selectedItem, destFile);
+                                // addedResxProjectItem = this.AddFileToProject(selectedItem, destFile);
+                                addedResxProjectItem = this.AddFileToProjectAsChild(selectedItem, destFile);
                                 currentIndex++;
                             }
                         }
@@ -272,12 +273,21 @@
             return selectedItem.ContainingProject.ProjectItems.AddFromFile(filename);
         }
 
-        private void AddFileToProjectAsChild(ProjectItem parentItem, string fileToAdd) {
+        private ProjectItem AddFileToProjectAsChild(ProjectItem parentItem, string fileToAdd) {
             if (parentItem == null) { throw new ArgumentNullException("parentItem"); }
             if (string.IsNullOrWhiteSpace(fileToAdd)) { throw new ArgumentNullException("fileToAdd"); }
+            
+            ProjectItem result = null;
 
-            // TODO: Figure out how to mark this as a child of the parent
-            ProjectItem addedItem = parentItem.ProjectItems.AddFromFile(fileToAdd);
+            if (parentItem.ProjectItems != null) {
+                result = parentItem.ProjectItems.AddFromFile(fileToAdd);
+            }
+            else {
+                // cannot do the nesting here for some reason so just add the file itself
+                result = parentItem.ContainingProject.ProjectItems.AddFromFile(fileToAdd);
+            }
+
+            return result;
         }
 
         public Guid UpdloadFileForSharing(string filename,string apiKey, string projectName /*,string ownerEmail*/) {
